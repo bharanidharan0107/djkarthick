@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>djkarthick</title>
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #000;
+      color: #fff;
+      line-height: 1.6;
+    }
+
+    .music-notes-background {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .music-notes-background span {
+      position: absolute;
+      font-size: 20px;
+      color: #98FB98;
+      opacity: 0;
+      animation: floatNotes 10s linear infinite;
+    }
+
+    @keyframes floatNotes {
+      0% {
+        transform: translateY(100vh) rotate(0deg);
+        opacity: 0;
+      }
+      10% {
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-10vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background-color: #a88508;
+      padding: 20px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 1000;
+    }
+
+    .logo {
+      font-size: 28px;
+      font-weight: bold;
+      color: #0d0c0c;
+      text-decoration: none;
+    }
+
+    nav a {
+      color: #ccc;
+      text-decoration: none;
+      margin-left: 20px;
+      font-size: 18px;
+      transition: color 0.3s ease;
+    }
+
+    nav a:hover,
+    nav a.active {
+      color: #98FB98;
+    }
+
+    section {
+      padding: 100px 50px 60px;
+      min-height: 100vh;
+      position: relative;
+      z-index: 1;
+    }
+
+    section h2 {
+      font-size: 36px;
+      color: #98FB98;
+      margin-bottom: 20px;
+    }
+
+    section p {
+      font-size: 18px;
+      max-width: 800px;
+    }
+
+    .home {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      margin-top: 80px;
+    }
+
+    .home-content {
+      margin-top: 30px;
+    }
+
+    .home-content h1 {
+      font-size: 42px;
+      margin-bottom: 10px;
+    }
+
+    .home-content span {
+      color: #98FB98;
+    }
+
+    .typing-text span {
+      color: #98FB98;
+      font-weight: bold;
+    }
+
+    .social-icons {
+      margin: 20px 0;
+    }
+
+    .social-icons a {
+      color: #fff;
+      font-size: 24px;
+      margin: 0 10px;
+      transition: color 0.3s;
+      touch-action: manipulation;
+    }
+
+    .social-icons a:hover {
+      color: #98FB98;
+    }
+
+    .social-icons a:active {
+      animation: blink-green 0.3s ease;
+    }
+
+    @keyframes blink-green {
+      0% {
+        color: #006400;
+        transform: scale(1.2);
+      }
+      50% {
+        color: #fff;
+        transform: scale(0.9);
+      }
+      100% {
+        color: #006400;
+        transform: scale(1);
+      }
+    }
+
+    /* Button */
+    .btn {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 12px 30px;
+      background: linear-gradient(135deg, #98FB98, #32cd32);
+      color: #000;
+      font-weight: bold;
+      text-decoration: none;
+      border-radius: 8px;
+      box-shadow: 0 4px 15px rgba(152, 251, 152, 0.4);
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+      animation: fadeInUp 0.8s ease-out both;
+    }
+
+    .btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.2);
+      transform: skewX(-20deg);
+      transition: left 0.5s;
+    }
+
+    .btn:hover::before {
+      left: 100%;
+    }
+
+    .btn:hover {
+      background: linear-gradient(135deg, #76d976, #2eb82e);
+      box-shadow: 0 0 25px rgba(152, 251, 152, 0.6);
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        padding: 15px 20px;
+      }
+
+      nav {
+        margin-top: 10px;
+      }
+
+      nav a {
+        display: inline-block;
+        margin: 10px;
+      }
+
+      section {
+        padding: 80px 20px;
+      }
+
+      .home-content h1 {
+        font-size: 32px;
+      }
+
+      .home-content p {
+        font-size: 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Floating Notes Background -->
+  <div class="music-notes-background"></div>
+
+  <!-- Header -->
+  <header>
+    <a href="#" class="logo">djkarthick 🎧</a>
+    <nav>
+      <a href="#home" class="active">Home</a>
+      <a href="#services">Services</a>
+      <a href="#about">About Us</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <!-- Home Section -->
+  <section id="home" class="home">
+    <div class="home-img">
+      <img src="dj1.jpg" alt="DJ Karthick" style="width:100%; max-height:600px; object-fit:cover;">
+    </div>
+    <div class="home-content">
+      <h1>Hi, it's <span>djkarthick</span></h1>
+      <h1 class="typing-text">I'm a <span id="typing"></span></h1>
+      <div class="social-icons">
+        <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+        <a href="#"><i class="fa-brands fa-github"></i></a>
+        <a href="#"><i class="fa-brands fa-instagram"></i></a>
+      </div>
+      <a href="#contact" class="btn">Contact Me</a>
+    </div>
+  </section>
+
+  <!-- Services Section -->
+  <section id="services">
+    <h2>Services</h2>
+    <img src="dj9.jpg" alt="Services" style="width:100%; max-height:650px; object-fit:cover;">
+    <p>We offer DJ services for weddings, parties, corporate events, and more. High-quality sound systems and lighting effects included.</p>
+  </section>
+
+  <!-- About Section -->
+  <section id="about">
+    <h2>About Us</h2>
+    <img src="dj2.jpg" alt="About DJ Karthick" style="width:100%; max-height:570px; object-fit:cover;">
+    <p>Hi guys, I am Karthick, with over 7 years of experience in live shows, music parties, and event DJing. Passionate about creating memorable moments with music.</p>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact">
+    <h2>Contact</h2>
+    <img src="dj8.jpg" alt="Contact DJ Karthick" style="width:100%; max-height:680px; object-fit:cover;">
+    <p>Get in touch to book DJ Karthick for your next event. Reach out via email, social media, or phone.</p>
+    <a href="#" class="btn">Contact Now</a>
+  </section>
+
+  <!-- Typing Script -->
+  <script>
+    const text = ['graphic designer', 'professional in dj', 'businessman'];
+    let count = 0, index = 0, currentText = '', letter = '';
+    (function type() {
+      if (count === text.length) count = 0;
+      currentText = text[count];
+      letter = currentText.slice(0, ++index);
+      document.getElementById('typing').textContent = letter;
+      if (letter.length === currentText.length) {
+        count++;
+        index = 0;
+        setTimeout(type, 1000);
+      } else {
+        setTimeout(type, 150);
+      }
+    })();
+  </script>
+
+  <!-- Floating Music Notes Script -->
+  <script>
+    const notesContainer = document.querySelector('.music-notes-background');
+    const musicSymbols = ['🎵', '🎶', '🎧', '🎼','🎻'];
+
+    function createNote() {
+      const note = document.createElement('span');
+      note.textContent = musicSymbols[Math.floor(Math.random() * musicSymbols.length)];
+      note.style.left = Math.random() * 100 + 'vw';
+      note.style.animationDuration = (Math.random() * 5 + 5) + 's';
+      note.style.fontSize = (Math.random() * 20 + 20) + 'px';
+      notesContainer.appendChild(note);
+
+      // Remove the note after 10 seconds
+      setTimeout(() => {
+        note.remove();
+      }, 10000);
+    }
+
+    setInterval(createNote, 500);
+  </script>
+</body>
+</html>
+
+
